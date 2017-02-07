@@ -40,35 +40,30 @@ public class Lab3_15 {
     System.out.println("The lottery number is " + lottery + ".");
 
     //Checking the guess against the criteria for the $10,000 prize
-    if((lottery1 - first) == 0){
-      if((lottery2 - second) == 0){
-        switch(lottery3 - third){
-          case 0 : System.out.println("Your prize is $10,000."); break;
-        }
+    if(guess == lottery){
+      switch(lottery - guess){
+        case 0 : System.out.println("Your prize is $10,000."); break;
       }
-    } 
-
-    //Checking for any other winnings
-    if(((lottery1 == first)
-     ||(lottery1 == second)
-     ||(lottery1 == third))
-     &&((lottery2 == first)
-     ||(lottery2 == second)
-     ||(lottery2 == third))
-     &&((lottery3 == first)
-     ||(lottery3 == second)
-     ||(lottery3 == third)))
-       System.out.println("Your prize is $3,000.");
-    else if(((lottery1 == first)
-          ||(lottery1 == second)
-          ||(lottery1 == third))
-          ||((lottery2 == first)
-          ||(lottery2 == second)
-          ||(lottery2 == third))
-          ||((lottery3 == first)
-          ||(lottery3 == second)
-          ||(lottery3 == third)))
-            System.out.println("Your prize is $1,000.");    
+    } else if(((lottery1 == first)
+       ||(lottery1 == second)
+       ||(lottery1 == third))
+       &&((lottery2 == first)
+       ||(lottery2 == second)
+       ||(lottery2 == third))
+       &&((lottery3 == first)
+       ||(lottery3 == second)
+       ||(lottery3 == third)))
+         System.out.println("Your prize is $3,000.");
+      else if(((lottery1 == first)
+        ||(lottery1 == second)
+        ||(lottery1 == third))
+        ||((lottery2 == first)
+        ||(lottery2 == second)
+        ||(lottery2 == third))
+        ||((lottery3 == first)
+        ||(lottery3 == second)
+        ||(lottery3 == third)))
+          System.out.println("Your prize is $1,000.");    
   } 
 }
 
