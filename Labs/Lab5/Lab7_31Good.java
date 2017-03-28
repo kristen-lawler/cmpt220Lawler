@@ -64,7 +64,7 @@ public class Lab7_31 {
  
     //solution 
     int[] solution = merge(list1, list2);
-    System.out.print("The merged list is ");
+    System.out.println("The merged and sorted list is: ");
     for (int i = 0; i < solution.length; i++){
       System.out.print(solution[i]+ " ");
     }

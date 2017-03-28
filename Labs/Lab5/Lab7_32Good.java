@@ -10,64 +10,50 @@
    * is called a pivot.
    */
 import java.util.Scanner;
-public class Lab7_32{
+public class Lab7_32Fix{
   public static int[] partition(int[] list){
     //parameters and useful initializations
     int length = list.length;
-    int greater = 0;
+    int greaterEq = 0;
     int less = 0;
-    boolean same = false;
-
-    //number of elements before and after the pivot
+    int pivot = list[0];
+    
+    //number of elements before and after the pivot element
     for(int i = 1; i < length; i++){
       if(list[i] >= list[0]){
-        greater++;
+        greaterEq++;
       }
       else{
-        less ++;
+        less++;
       }
     }
+    
+    //index for where to place each element in the new array
+    int greaterEqCount = less + 1;
+    int lessCount = 0;
     
     //creating a blank array for our result
     int[] newList = new int[length];
     //inserting our pivot element at the appropriate location
     newList[less] = list[0];
-    
-    //placing elements that are less in array
-    for(int count = 0; count < less; ){    
-      for(int j = 0; j < length; j++){
-        if(list[j] < list[0]){
-          newList[count] = list[j];
-          count++;
-        }
+
+    /*comparing and assigning locations for values from the input 
+    array to the final array */
+    for(int i = 1; i < length; i++){
+      if(list[i] < pivot){
+        newList[lessCount] = list[i];
+        lessCount++;
       }
-    }
-
-
-    //placing elements that are greater in array
-    for(int count = 0; count < greater; ){    
-      //inner loop to check each element
-      for(int k = 0; k < length; k++){
-        if(list[k] == list[0]){
-          newList[less+1] = list[k];
-          count++;
-          same = true;
-        }
-        else if((list[k] > list[0]) && same){
-          count++;
-          newList[count + less] = list[k];
-          count++;
-        }
-        else if((list[k] > list[0]) && !same){
-          newList[count + less] = list[k];
-          count++;
-        }
-      }  
+      else{
+        newList[greaterEqCount] = list[i];
+        greaterEqCount++;
+      }
     }
     return newList;
   }
 
- 
+
+  //Test
   public static void main(String[] args){
     Scanner input = new Scanner(System.in);
 
@@ -75,7 +61,7 @@ public class Lab7_32{
     int l1 = input.nextInt();
 
     int[] list1 = new int[l1];
-    System.out.println("Please enter " + l1 + " numbers:");
+    System.out.println("Please enter " + l1 + " integers:");
     for(int x = 0; x < l1 ; x++){
       list1[x] = input.nextInt();   
     }
