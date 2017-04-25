@@ -1,0 +1,19 @@
+49 pts
+
+Krissy,
+
+- Congratulations on coding one-dimensional convolution!
+
+However, 
+
+- There is incorrect indentatin in a block. You must use two-space indentation.
+
+- Please read the style guidelines to make sure you understand them. Do not
+  hesitate to ask any questions.
+
+- Please read the assignment instructions carefully.
+
+
+Peace,
+
+- Dr. Rivas
