@@ -3,7 +3,7 @@
    * author: Kristen Lawler
    * course: CMPT 220
    * assignment: Lab 7
-   * due date: April 15, 2017
+   * due date: April 25, 2017
    * version: 1.8
    * 
    * This file finds that 10 smallest square numbers greater than

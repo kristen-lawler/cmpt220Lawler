@@ -15,11 +15,11 @@ public class Test{
 
     //adding elements 1 through 20 into the queue
     for(int i=1; i < 21; i++){
-    	test.enqueue(i);
+      test.enqueue(i);
     }
     //removing and showing each element
     for(int i=0; i<20; i++){
-    	System.out.println(test.dequeue());
+      System.out.println(test.dequeue());
     }
   }
 }

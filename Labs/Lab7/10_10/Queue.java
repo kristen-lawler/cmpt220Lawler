@@ -24,36 +24,36 @@ public class Queue{
       this.capacity = 8;
     }
     else{
-    	this.capacity = this.elements.length + 1;
+      this.capacity = this.elements.length + 1;
     }
   }
  
   //methods
   //getting the size of the queue
   public int getSize(){
-  	this.size = this.elements.length;
-  	return size;
+    this.size = this.elements.length;
+    return size;
   }
 
   //setting the elements
   public void setElements(int[] x){
-  	this.elements = x;
-  	this.size = x.length;
-  	if(size >= capacity){
-  	  capacity = size;
-  	}
+    this.elements = x;
+    this.size = x.length;
+    if(size >= capacity){
+      capacity = size;
+    }
   }
   //getting an element from a specified location
   public int getElement(int n){
-  	return elements[n];
+    return elements[n];
   }
 
   //adds v into the front of the queue
   public void enqueue(int v){
     Queue temp = new Queue();
     if(elements == null){
-    	elements = new int[1];
-    	elements[0] = v;
+      elements = new int[1];
+      elements[0] = v;
     }
     else{
       this.size = this.elements.length;
@@ -72,7 +72,7 @@ public class Queue{
 
   //removes element from the back of the queue
   public int dequeue(){
-  	this.size = this.elements.length;
+    this.size = this.elements.length;
     int removed = this.elements[(this.size - 1)];
     Queue temp = new Queue();
     temp.elements = this.elements;
@@ -86,28 +86,19 @@ public class Queue{
 
   //returns true if the queue is empty and false otherwise
   public boolean empty(){
-  	if(elements == null){
-  		this.size = 0;
-  	}
-  	else{
-  		this.size = this.elements.length;
-  	}
-  	boolean answer;
-  	if(this.size == 0){
-  		answer = true;
-  	}
-  	else{
-  		answer = false;
-  	}
-  	return answer;
+    if(elements == null){
+      this.size = 0;
+    }
+    else{
+      this.size = this.elements.length;
+    }
+    boolean answer;
+    if(this.size == 0){
+      answer = true;
+    }
+    else{
+      answer = false;
+    }
+    return answer;
   }
-
-
-
-
-
-
-
-
-
 }
