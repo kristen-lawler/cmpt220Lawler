@@ -12,7 +12,6 @@ public class Test{
   public static void main(String[] args){
     //create an instance of Queue
     Queue test = new Queue();
-
     //adding elements 1 through 20 into the queue
     for(int i=1; i < 21; i++){
       test.enqueue(i);

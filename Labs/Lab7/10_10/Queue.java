@@ -27,7 +27,7 @@ public class Queue{
       this.capacity = this.elements.length + 1;
     }
   }
- 
+   
   //methods
   //getting the size of the queue
   public int getSize(){
@@ -58,7 +58,7 @@ public class Queue{
     else{
       this.size = this.elements.length;
       if(this.size  >= this.capacity){
-        this.capacity = capacity * 2;
+      this.capacity = capacity * 2;
       }
       temp.elements = this.elements;
       this.size = size + 1;

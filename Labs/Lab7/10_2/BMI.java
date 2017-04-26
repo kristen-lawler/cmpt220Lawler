@@ -19,59 +19,59 @@ public class BMI {
  
   //All constructors
   public BMI(String name, int age, double weight, double height) {
-  this.name = name;
-  this.age = age;
-  this.weight = weight;
-  this.height = height;
+    this.name = name;
+    this.age = age;
+    this.weight = weight;
+    this.height = height;
   }
 
   /** Construct a BMI with the specified name, age, weight,
   * feet, and inches
   */
   public BMI(String name, int age, double weight, double feet, double inches){
- this.name = name;
- this.age = age;
- this.weight = weight;
- this.feet = height / 12;
- this.inches = height;
+    this.name = name;
+    this.age = age;
+    this.weight = weight;
+    this.feet = height / 12;
+    this.inches = height;
   }
  
   public BMI(String name, double weight, double height) {
-  this(name, 20, weight, height);
+    this(name, 20, weight, height);
   }
 
   //All methods for the BMI object
   public double getBMI() {
-  double bmi = weight * KILOGRAMS_PER_POUND /
-  ((height * METERS_PER_INCH) * (height * METERS_PER_INCH));
-  return Math.round(bmi * 100) / 100.0;
+    double bmi = weight * KILOGRAMS_PER_POUND /
+    ((height * METERS_PER_INCH) * (height * METERS_PER_INCH));
+    return Math.round(bmi * 100) / 100.0;
   }
 
   public String getStatus() {
-  double bmi = getBMI();
-  if (bmi < 18.5)
-  return "Underweight";
-  else if (bmi < 25)
-  return "Normal";
-  else if (bmi < 30)
-  return "Overweight";
-  else
-  return "Obese";
+    double bmi = getBMI();
+    if (bmi < 18.5)
+      return "Underweight";
+    else if (bmi < 25)
+      return "Normal";
+    else if (bmi < 30)
+      return "Overweight";
+    else
+      return "Obese";
   }
 
   public String getName() {
-  return name;
+    return name;
   }
 
   public int getAge() {
-  return age;
+    return age;
   }
 
   public double getWeight() {
-  return weight;
+    return weight;
   }
 
   public double getHeight() {
-  return height;
+    return height;
   }
 }
