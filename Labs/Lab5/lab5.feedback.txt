@@ -1,0 +1,21 @@
+9 pts
+
+Kristen,
+
+About your programs...
+
+Functionality
+
+- Could not test functionality because programs cannot be compiled.  -1pt
+
+Please make sure you read the problems well; follow instructions.
+
+
+Style Check
+
+- Your programs pass the style check. Good job!
+
+
+Peace,
+
+- Dr. Rivas
