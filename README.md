@@ -15,4 +15,4 @@ verified an answer to this problem, I utilized Java to simulate the solution.
 Additionally, this program accepts user inputs to determine the size of the 
 population based upon the number of "suitors" and their possible mates as well 
 as a list of preference of the user. A full breakdown of this project can be 
-found in the Project 2 folder.
+found in the Projects/2/writeup folder.
