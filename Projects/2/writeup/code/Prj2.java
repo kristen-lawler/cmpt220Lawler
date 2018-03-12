@@ -6,7 +6,7 @@
    * due date: May 5, 2017
    * version: 1.8
    * 
-   * This file uses te Individual object to create a population 
+   * This file uses the Individual object to create a population 
    * based on user input and appropriately match that population
    * to consider the preferences of all individuals.
    */
@@ -14,7 +14,7 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Prj2{
+public class Prj2 extends Individual{
   public static void main(String[] args) {    
     //getting user input for number of mates and preference of them
     Scanner input = new Scanner(System.in);
@@ -50,7 +50,7 @@ public class Prj2{
       //each suitor is referenced by j
     }
 
-    //for test print all pref lists
+    //for test, print all pref lists
     for(int g=0; g<matches; g++){
       System.out.printf("\nDecider " + g + " has preference of: \n");
       for(int l=0; l<matches; l++){
@@ -62,7 +62,7 @@ public class Prj2{
       }
     }
 
-    //setting waitList of deciders to all 1's to start
+    //setting waitList of deciders to all -1's to start
     for(int k=0; k<matches; k++){
       deciders.get(k).waitList = new int[matches];
       for(int d=0; d<matches; d++){
@@ -78,6 +78,7 @@ public class Prj2{
           System.out.printf("\nProposer " + i + " is taken\n");
           continue;
         }
+       
         int prop = proposers.get(i).numProps;
         int tempMate = proposers.get(i).rank[prop];
         proposers.get(i).numProps++;
@@ -85,6 +86,8 @@ public class Prj2{
             tempMate + "\n");
 
         //adding this proposer to the preferential decider's waitList
+        if(deciders.get(tempMate).onHold != -1)
+          deciders.get(tempMate).waitList[0] = deciders.get(tempMate).onHold; 
         for(int k=0; k<matches; k++){ 
           if(deciders.get(tempMate).waitList[k] == -1){
             deciders.get(tempMate).waitList[k]= i;
@@ -96,37 +99,40 @@ public class Prj2{
         }
       } //end proposal for this round
 
-      //deciders must now select someone from waitList to put on hold
-      for(int t=0; t<matches; t++){//to access decider t
-        //if on hold let taken be false so that can propose next round
+      //deciders must now select someone from waitList to put on hold (most preferential out of options) 
+      for(int t=0; t<matches; t++){//to access each decider
+        //if on hold let taken be false so that can propose next round if get dumped
         if(deciders.get(t).onHold != -1){
-          proposers.get(deciders.get(t).onHold).taken = false;
+          int fling = deciders.get(t).onHold;
+          proposers.get(fling).taken = false;
         }
 
-        //find person on waitlist with lowest rank
-        int temp = matches + 2;//greater than any rank that will be produced
+        //find person on waitlist with lowest rank (most preferential candidate)
         for(int f=0; f<matches; f++){
           if(deciders.get(t).waitList[0] == -1){
-            break;
+            break;//leave onHold as -1 since didnt receive any proposals
           }
-          else if(deciders.get(t).waitList[f] == -1){
-            deciders.get(t).waitList = new int[matches];
-            for(int d=0; d<matches; d++){
-              deciders.get(t).waitList[d] = -1;
+          //checking to see if the fth ranked person proposed in order of preference
+          else{
+            int check = deciders.get(t).rank[f]; 
+            //iterate through the waitlist to see if "check" is on it
+            boolean done = false; //as soon as find a match must terminate 'f' loop using this bool
+            for(int z=0; z < matches; z++){
+              if(deciders.get(t).waitList[z] == check){
+                deciders.get(t).onHold = check;
+                done = true;
+                //the selected proposer is marked as taken for the following round (do this on line 151 too...)
+                proposers.get(check).taken = true; 
+                break;
+              }
             }
-            deciders.get(t).waitList[0] = deciders.get(t).onHold;
-          }
-          else if(temp > find(deciders.get(t).rank , deciders.get(t).waitList[f])){
-            deciders.get(t).onHold = deciders.get(t).waitList[f];
-            temp = find(deciders.get(t).rank , deciders.get(t).waitList[f]);
+            if(done)
+              break;
           }
         }
+
         System.out.println("\nDecider " + t + " has on hold " + 
             deciders.get(t).onHold);
-      
-        if(deciders.get(t).onHold != -1){
-          proposers.get( deciders.get(t).onHold ).taken = true;
-        }
       }//conclude acceptances of proposals for this round
 
       //before enter next round, check to see if everyone happens to be matched
@@ -142,6 +148,9 @@ public class Prj2{
         break;
       } 
     }//end algorithm
+    
+
+
     
     //outprint pairings
     for(int h=0; h<matches; h++){

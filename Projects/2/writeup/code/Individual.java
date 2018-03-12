@@ -21,16 +21,19 @@ public class Individual{
   public int numProps = 0; //number of proposals a proposer has made
 
   //constructors
+  public Individual(){
+  }
+
   public Individual(int x, int m){
-  	this.identity = x;
-  	this.matches1 = m;
-    this.rank = this.permutation( m );
+  	identity = x;
+  	matches1 = m;
+    rank = this.permutation( m );
   }
   //constructor to call when assign an object to the user
-  public Individual(int x, int m, int[] p){
-    this.identity = x;
-    this.matches1 = m;
-    this.rank = p;
+  public Individual( int x, int m, int[] p){
+    identity = x;
+    matches1 = m;
+    rank = p;
   }
 
   //randomly permute numbers to develop a preference list
